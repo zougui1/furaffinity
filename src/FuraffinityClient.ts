@@ -9,9 +9,11 @@ import {
 } from './search';
 import { convertSubmissionResult, type Submission } from './submission';
 import { FurAffinityError } from './FurAffinityError';
+import { FuraffinityURL } from './FuraffinityURL';
 
 export class FuraffinityClient {
   readonly #fa: FA;
+  static readonly URL = new FuraffinityURL();
 
   constructor(options: FuraffinityClientOptions) {
     this.#fa = new FA({
