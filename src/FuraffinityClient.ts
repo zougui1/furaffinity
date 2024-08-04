@@ -13,7 +13,7 @@ import { FuraffinityURL } from './FuraffinityURL';
 
 export class FuraffinityClient {
   readonly #fa: FA;
-  static readonly URL = new FuraffinityURL();
+  static readonly URL = FuraffinityURL;
 
   constructor(options: FuraffinityClientOptions) {
     this.#fa = new FA({
