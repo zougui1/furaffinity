@@ -1,4 +1,5 @@
 import { FurAffinityClient as FA } from 'fa.js';
+import { isNumber } from 'radash';
 
 import {
   convertSearchPageResult,
@@ -35,6 +36,28 @@ export class FuraffinityClient {
 
       throw error;
     }
+  }
+
+  extractSubmissionId = (url: string): number => {
+    if (!FuraffinityURL.checkIsValidHostName(url)) {
+      throw new Error(`Invalid URL hostname: ${url}`);
+    }
+
+    const urlObj = new URL(url);
+
+    const [viewStr, idStr] = urlObj.pathname.split('/');
+
+    if (viewStr !== 'view') {
+      throw new Error(`Invalid URL pathname: ${url}`);
+    }
+
+    const id = Number(idStr);
+
+    if (!isNumber(id)) {
+      throw new Error(`Invalid URL ID: ${url}`);
+    }
+
+    return id;
   }
 
   async * search(query: string, options?: SearchOptions) {
