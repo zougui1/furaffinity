@@ -45,7 +45,7 @@ export class FuraffinityClient {
 
     const urlObj = new URL(url);
 
-    const [viewStr, idStr] = urlObj.pathname.split('/');
+    const [viewStr, idStr] = urlObj.pathname.split('/').filter(Boolean);
 
     if (viewStr !== 'view') {
       throw new Error(`Invalid URL pathname: ${url}`);
