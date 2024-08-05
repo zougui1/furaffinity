@@ -13,7 +13,7 @@ export const convertSubmissionResult = (submission: FASubmission): Submission =>
     contentUrl: submission.content_url,
     author: {
       name: submission.artist_name,
-      url: submission.artist_url,
+      url: fixSelfLink(submission.artist_url),
       avatar: submission.artist_thumb_url,
     },
     descriptionText: submission.body_text,
