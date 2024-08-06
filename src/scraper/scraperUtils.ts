@@ -1,5 +1,5 @@
 import * as cheerio from 'cheerio';
-import * as datefns from 'date-fns';
+import { parse, isValid } from 'date-fns';
 
 import { fixFaUrl } from '../utils';
 
@@ -21,9 +21,9 @@ const readDateField = (field: string): Date | null => {
 
   // Try all known date formats
   for (const format of dateFormats) {
-    const parsedDate = datefns.parse(field, format, new Date());
+    const parsedDate = parse(field, format, new Date());
 
-    if (datefns.isValid(parsedDate)) {
+    if (isValid(parsedDate)) {
       return parsedDate;
     }
   }
