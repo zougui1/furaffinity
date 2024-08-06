@@ -1,6 +1,6 @@
 {
   "name": "@zougui/furaffinity",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -26,7 +26,7 @@
   "license": "ISC",
   "dependencies": {
     "cheerio": "1.0.0-rc.12",
-    "date-fns": "^3.6.0",
+    "date-fns": "^2.30.0",
     "radash": "^12.1.0",
     "scrape-it": "^6.1.2",
     "string-strip-html": "8.4.0",
