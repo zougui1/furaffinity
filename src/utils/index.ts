@@ -1,1 +1,1 @@
-export * from './fixSelfLink';
+export * from './fixFaUrl';

@@ -1,21 +1,25 @@
 export class FurAffinityError extends Error {
-  status: number;
+  code: number;
   url: string;
+  details?: string;
 
-  constructor(message: string, status: number, url: string) {
+  constructor({ message, code, url, details }: FurAffinityErrorOptions) {
     super(message);
 
-    this.status = status;
+    this.code = code;
     this.url = url;
+    this.details = details;
   }
 
   static isError = (value: unknown): value is FurAffinityError => {
-    return (
-      value instanceof Error &&
-      'status' in value &&
-      typeof value.status === 'number' &&
-      'url' in value &&
-      typeof value.url === 'string'
-    );
+    return value instanceof FurAffinityError;
   }
+}
+
+
+export interface FurAffinityErrorOptions {
+  message: string;
+  code: number;
+  url: string;
+  details?: string;
 }

@@ -8,13 +8,28 @@ importers:
 
   .:
     dependencies:
-      fa.js:
-        specifier: ^0.5.0
-        version: 0.5.0
+      cheerio:
+        specifier: 1.0.0-rc.12
+        version: 1.0.0-rc.12
+      date-fns:
+        specifier: ^3.6.0
+        version: 3.6.0
       radash:
         specifier: ^12.1.0
         version: 12.1.0
+      scrape-it:
+        specifier: ^6.1.2
+        version: 6.1.2
+      string-strip-html:
+        specifier: 8.4.0
+        version: 8.4.0
+      zod:
+        specifier: ^3.23.8
+        version: 3.23.8
     devDependencies:
+      '@types/cheerio':
+        specifier: ^0.22.35
+        version: 0.22.35
       rimraf:
         specifier: ^4.1.2
         version: 4.4.1
@@ -23,10 +38,6 @@ importers:
         version: 5.5.4
 
 packages:
-
-  '@babel/runtime@7.25.0':
-    resolution: {integrity: sha512-7dRy4DwXwtzBrPbZflqxnvfxLF8kdZXPkhymtDeFoFqE6ldzjQFgYTtYIFARcLEYDrqfBfYcZt1WqFxRoyC9Rw==}
-    engines: {node: '>=6.9.0'}
 
   '@types/cheerio@0.22.35':
     resolution: {integrity: sha512-yD57BchKRvTV+JD53UZ6PD8KWY5g5rvvMLRnZR3EQBCZXiDT/HR+pKpMzFGlWNhFrXlo7VPZXtKvIEwZkAWOIA==}
@@ -76,9 +87,8 @@ packages:
     resolution: {integrity: sha512-HTUrgRJ7r4dsZKU6GjmpfRK1O76h97Z8MfS1G0FozR+oF2kG6Vfe8JE6zwrkbxigziPHinCJ+gCPjA9EaBDtRw==}
     engines: {node: '>= 6'}
 
-  date-fns@2.30.0:
-    resolution: {integrity: sha512-fnULvOpxnC5/Vg3NCiWelDsLiUc9bRwAPs/+LfTLNvetFCtCTN+yQz15C/fs4AwX1R9K5GLtLfn8QW+dWisaAw==}
-    engines: {node: '>=0.11'}
+  date-fns@3.6.0:
+    resolution: {integrity: sha512-fRHTG8g/Gif+kSh50gaGEdToemgfj74aRX3swtiouboip5JDLAyDE9F11nHMIcvOaXeOC6D7SpNhi7uFyB7Uww==}
 
   deffy@2.2.4:
     resolution: {integrity: sha512-pLc9lsbsWjr6RxmJ2OLyvm+9l4j1yK69h+TML/gUit/t3vTijpkNGh8LioaJYTGO7F25m6HZndADcUOo2PsiUg==}
@@ -106,9 +116,6 @@ packages:
 
   err@2.1.12:
     resolution: {integrity: sha512-C0XHNJOnH072AC8q0L5oclAZvBCD8nzBb24bcHSqEkurDHyRo6bpOztgddHtH4Ik/9evmBCVW0nEY0NdnSt46Q==}
-
-  fa.js@0.5.0:
-    resolution: {integrity: sha512-nOQmTTPKUS1K/7lMsNuySgT6OAuod/p0z94Lpbi24SBBP7oWmwA2s/lWwLxlVZGaykxbHAwCN9VbOt8nrJhYyw==}
 
   follow-redirects@1.15.6:
     resolution: {integrity: sha512-wWN62YITEaOpSK584EZXJafH1AGpO8RVgElfkuXbTOrPX4fIfOyEpW/CsiNd8JdYrAoOvafRTOEnvsO++qCqFA==}
@@ -191,9 +198,6 @@ packages:
     resolution: {integrity: sha512-b0Zcf09AhqKS83btmUeYBS8tFK7XL2e3RvLmZcm0sTdF1/UUlHSsjXdCcWNxe7yfmAlPve5ym0DmKGtTzP6kVQ==}
     engines: {node: '>=14.18.0'}
 
-  regenerator-runtime@0.14.1:
-    resolution: {integrity: sha512-dYnhHh0nJoMfnkZs6GmmhFknAGRrLznOu5nc9ML+EJxGvrx6H7teuevqVqCuPcPK//3eDrrjQhehXVx9cnkGdw==}
-
   regex-escape@3.4.10:
     resolution: {integrity: sha512-qEqf7uzW+iYcKNLMDFnMkghhQBnGdivT6KqVQyKsyjSWnoFyooXVnxrw9dtv3AFLnD6VBGXxtZGAQNFGFTnCqA==}
 
@@ -211,6 +215,10 @@ packages:
   sliced@1.0.1:
     resolution: {integrity: sha512-VZBmZP8WU3sMOZm1bdgTadsQbcscK0UM8oKxKVBs4XAhUo2Xxzm/OFMGBkPusxw9xL3Uy8LrzEqGqJhclsr0yA==}
 
+  string-strip-html@8.4.0:
+    resolution: {integrity: sha512-ajjEpk0V1G0+/RrX08I2pSj/kfsYU5wkUKWEKPQJXVQpdahZNSljiuWVqf8UgrB2E9DvFcougbl1gPwHzkuEDg==}
+    engines: {node: '>=14'}
+
   typescript@5.5.4:
     resolution: {integrity: sha512-Mtq29sKDAEYP7aljRgtPOpTvOfbwRWlS6dPRzwjdE+C0R4brX/GUyhHSecbHMFLNBLcJIPt9nl9yG5TZ1weH+Q==}
     engines: {node: '>=14.17'}
@@ -222,11 +230,10 @@ packages:
   undici-types@6.13.0:
     resolution: {integrity: sha512-xtFJHudx8S2DSoujjMd1WeWvn7KKWFRESZTMeL1RptAYERu29D6jphMjjY+vn96jvN3kVPDNxU/E13VTaXj6jg==}
 
-snapshots:
+  zod@3.23.8:
+    resolution: {integrity: sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==}
 
-  '@babel/runtime@7.25.0':
-    dependencies:
-      regenerator-runtime: 0.14.1
+snapshots:
 
   '@types/cheerio@0.22.35':
     dependencies:
@@ -305,9 +312,7 @@ snapshots:
 
   css-what@6.1.0: {}
 
-  date-fns@2.30.0:
-    dependencies:
-      '@babel/runtime': 7.25.0
+  date-fns@3.6.0: {}
 
   deffy@2.2.4:
     dependencies:
@@ -340,14 +345,6 @@ snapshots:
       barbe: 3.0.16
       iterate-object: 1.3.4
       typpy: 2.3.13
-
-  fa.js@0.5.0:
-    dependencies:
-      cheerio: 1.0.0-rc.12
-      date-fns: 2.30.0
-      scrape-it: 6.1.2
-    transitivePeerDependencies:
-      - debug
 
   follow-redirects@1.15.6: {}
 
@@ -425,8 +422,6 @@ snapshots:
 
   radash@12.1.0: {}
 
-  regenerator-runtime@0.14.1: {}
-
   regex-escape@3.4.10: {}
 
   rimraf@4.4.1:
@@ -454,6 +449,8 @@ snapshots:
 
   sliced@1.0.1: {}
 
+  string-strip-html@8.4.0: {}
+
   typescript@5.5.4: {}
 
   typpy@2.3.13:
@@ -461,3 +458,5 @@ snapshots:
       function.name: 1.0.13
 
   undici-types@6.13.0: {}
+
+  zod@3.23.8: {}

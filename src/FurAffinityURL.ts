@@ -5,7 +5,7 @@ const hostNames = [
   'vxfuraffinity.net',
 ].reduce((acc, host) => [...acc, host, `www.${host}`], [] as string[]);
 
-export class FuraffinityURL {
+export class FurAffinityURL {
   static readonly hostNames: Readonly<string[]> = hostNames;
 
   static checkIsValidHostName = (value: string): boolean => {

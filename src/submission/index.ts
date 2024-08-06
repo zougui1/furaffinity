@@ -1,2 +1,2 @@
-export * from './convertSubmissionResuilt';
-export type * from './types';
+export * from './FurAffinitySubmission';
+export type { Submission } from './schema';

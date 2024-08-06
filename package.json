@@ -1,6 +1,6 @@
 {
   "name": "@zougui/furaffinity",
-  "version": "0.1.6",
+  "version": "0.2.0",
   "description": "",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -13,6 +13,7 @@
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {
+    "@types/cheerio": "^0.22.35",
     "rimraf": "^4.1.2",
     "typescript": "^5.5.4"
   },
@@ -24,7 +25,11 @@
   "author": "Zougui",
   "license": "ISC",
   "dependencies": {
-    "fa.js": "^0.5.0",
-    "radash": "^12.1.0"
+    "cheerio": "1.0.0-rc.12",
+    "date-fns": "^3.6.0",
+    "radash": "^12.1.0",
+    "scrape-it": "^6.1.2",
+    "string-strip-html": "8.4.0",
+    "zod": "^3.23.8"
   }
 }
