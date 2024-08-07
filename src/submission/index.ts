@@ -1,2 +1,2 @@
 export * from './FurAffinitySubmission';
-export type { Submission } from './schema';
+export { submissionSchema, type Submission } from './schema';

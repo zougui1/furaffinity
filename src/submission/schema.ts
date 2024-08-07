@@ -15,7 +15,7 @@ export const internalSubmissionSchema = z.object({
   keywords: z.array(z.string().min(1)),
   postedAt: z.date(),
 }).transform(submission => {
-  return {
+  const publicSubmission: Submission = {
     id: submission.id,
     url: submission.url,
     type: submission.type,
@@ -32,12 +32,32 @@ export const internalSubmissionSchema = z.object({
     keywords: submission.keywords,
     postedAt: submission.postedAt,
   };
+
+  return publicSubmission;
+});
+
+export const submissionSchema = z.object({
+  id: z.number().min(1).int(),
+  url: z.string().url().min(1),
+  type: z.enum(['image', 'story', 'music', 'flash', 'unknown']),
+  title: z.string().min(1),
+  thumbnailUrl: z.string().url().min(1),
+  contentUrl: z.string().url().min(1),
+  author: z.object({
+    name: z.string().min(1),
+    url: z.string().url().min(1),
+    avatar: z.string().url().min(1),
+  }),
+  descriptionText: z.string(),
+  descriptionHtml: z.string(),
+  keywords: z.array(z.string().min(1)),
+  postedAt: z.date(),
 });
 
 export interface InternalSubmission extends z.input<typeof internalSubmissionSchema> {
 
 }
 
-export interface Submission extends z.output<typeof internalSubmissionSchema> {
+export interface Submission extends z.infer<typeof submissionSchema> {
 
 }
