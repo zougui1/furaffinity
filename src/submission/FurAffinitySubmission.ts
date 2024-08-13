@@ -84,6 +84,7 @@ export class FurAffinitySubmission {
         descriptionText: '#page-submission > table > tbody > tr:nth-child(1) > td > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td',
         descriptionHtml: scraperUtils.pickHtml('#page-submission > table > tbody > tr:nth-child(1) > td > table > tbody > tr:nth-child(2) > td > table > tbody > tr:nth-child(2) > td'),
         postedAt: scraperUtils.pickDateFromSpan('#page-submission td.stats-container span.popup_date'),
+        rating: '#page-submission .stats-container > .rating > .rating-box',
         keywords: {
           listItem: '#page-submission #keywords > a',
           data: {
@@ -125,6 +126,7 @@ export class FurAffinitySubmission {
         descriptionText: '#submission_page div.submission-description',
         descriptionHtml: scraperUtils.pickHtml('#submission_page div.submission-description'),
         postedAt: scraperUtils.pickDateFromSpan('#submission_page .submission-id-container span.popup_date'),
+        rating: '#submission_page .stats-container > .rating > .rating-box',
         keywords: {
           listItem: '#submission_page div.submission-sidebar section.tags-row > span.tags > a',
           data: {
