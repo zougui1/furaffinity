@@ -1,11 +1,19 @@
 import * as cheerio from 'cheerio';
 import scrape from 'scrape-it';
-import { stripHtml } from 'string-strip-html';
+import sanitizeHtml from 'sanitize-html';
 
 import { checkErrors, determineSiteVersion } from './utils';
 import type { DualScrapeOptions } from './types';
 import { FetchConfig, hHttpClient } from '../HttpClient';
 import { FURAFFINITY_ORIGIN } from '../constants';
+
+const disallowedTags = new Set(['script', 'style', 'xml']);
+const allowedTags = [
+  'html',
+  'body',
+  'img',
+  ...sanitizeHtml.defaults.allowedTags.filter(tag => !disallowedTags.has(tag)),
+];
 
 export class FurAffinityScraper {
   readonly #cookieA: string;
@@ -29,11 +37,12 @@ export class FurAffinityScraper {
   }
 
   scrape = <T>(body: string, options: DualScrapeOptions<T>): T => {
-    const safeHtml = stripHtml(body, {
-      onlyStripTags: ['script', 'style', 'xml'],
-      stripTogetherWithTheirContents: ['script', 'style', 'xml'],
+    const safeHtml = sanitizeHtml(body, {
+      allowedTags,
+      disallowedTagsMode: 'discard',
+      allowedAttributes: false,
     });
-    const doc = cheerio.load(safeHtml.result);
+    const doc = cheerio.load(safeHtml);
     const siteVersion = determineSiteVersion(doc);
     const scrapeOptions = siteVersion === 'beta' ? options.beta : options.classic;
     const scraped = scrape.scrapeHTML<T>(doc, scrapeOptions);
