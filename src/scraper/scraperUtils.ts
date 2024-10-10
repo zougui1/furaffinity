@@ -9,6 +9,8 @@ const dateFormats = [
   'MMM do, yyyy hh:mmaa', // Sep 27, 2021 06:16AM (beta note list)
 ];
 
+const reThumbnail = /^\/\/t\.facdn\.net\/(\d+)@(\d+)-(\d+)/;
+
 const readDateField = (field: string): Date | null => {
   if (!field) {
       return null;
@@ -98,6 +100,15 @@ export const scraperUtils = {
         }
 
         return null;
+      },
+    };
+  },
+
+  pickFigureId: () => {
+    return {
+      attr: 'id',
+      convert: (sid: string) => {
+        return Number(sid.split('-')[1]);
       },
     };
   },
